@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Chat</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    #greeting {
+      margin-bottom: 1rem;
+    }
+    #writer {
+      width: 100%;
+      height: 100px;
+      font-size: 1rem;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+    #sendBtn {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+    #response {
+      margin-top: 2rem;
+      white-space: pre-wrap;
+      background: #eee;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="greeting">Hello! Feel free to write anything below:</div>
+  <textarea id="writer" placeholder="Write something…"></textarea>
+  <br>
+  <button id="sendBtn">Send</button>
+
+  <div id="response"></div>
+
+  <script>
+    document.getElementById("sendBtn").addEventListener("click", async () => {
+      const userInput = document.getElementById("writer").value;
+
+      const res = await fetch("https://your-backend-url/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: userInput })
+      });
+
+      const data = await res.json();
+      document.getElementById("response").textContent = data.reply || "No response received.";
+    });
+  </script>
+</body>
+</html>
