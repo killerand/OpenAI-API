@@ -1,12 +1,19 @@
-# OpenAI-API
+# OpenAI-API Chatbot 🤖
+
+A simple Node.js chatbot that connects to OpenAI's GPT-3.5 API and interacts with users via a browser-based UI.
+
+## 📁 Project Structure
+
 Chatbot/
 │
 ├── public/
-│   └── index.html
-├── .env
-├── server.js
-└── package.json
-## Setup
-1. Clone the repository
-2. Create a `.env` file in the root folder: OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-3. Run the server:
+│   └── index.html        # Frontend interface  
+├── .env                  # Environment file (excluded in .gitignore)  
+├── server.js             # Express server setup with OpenAI API call  
+└── package.json          # Project metadata and dependencies  
+
+Create a .env file in the root directory
+Add your OpenAI API key like this:
+
+.env
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
